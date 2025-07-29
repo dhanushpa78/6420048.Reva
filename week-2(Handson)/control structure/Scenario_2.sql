@@ -1,0 +1,22 @@
+USE Week2_Assignment;
+
+SET SQL_SAFE_UPDATES = 0;
+
+DROP PROCEDURE IF EXISTS PromoteToVIP;
+
+DELIMITER $$
+
+CREATE PROCEDURE PromoteToVIP()
+BEGIN
+    UPDATE Customers
+    SET IsVIP = 1
+    WHERE Balance > 10000;
+END$$
+
+DELIMITER ;
+
+CALL PromoteToVIP();
+
+COMMIT;
+
+SELECT * FROM Customers;
